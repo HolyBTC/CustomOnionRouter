@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionRouter.Api", "OnionRouter.Api\OnionRouter.Api.csproj", "{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionRouter.Server.Api", "OnionRouter.Server\OnionRouter.Server.Api\OnionRouter.Server.Api.csproj", "{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OnionRouter.Server", "OnionRouter.Server", "{AA30478A-86B2-4441-85E8-8D703EDCCDAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,8 @@ Global
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6} = {AA30478A-86B2-4441-85E8-8D703EDCCDAD}
 	EndGlobalSection
 EndGlobal

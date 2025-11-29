@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OnionRouter.Api.Controllers;
+namespace OnionRouter.Server.Api.Controllers;
 
 [Route("api/health")]
 [ApiController]
