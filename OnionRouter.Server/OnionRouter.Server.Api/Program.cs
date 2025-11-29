@@ -8,7 +8,7 @@ var app = builder.Build();
 app.MapOpenApi();
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint("/openapi/docs.json", "SharpStreamer.Api");
+    options.SwaggerEndpoint("/openapi/docs.json", "OnionRouter.Server.Api");
 });
 
 app.MapControllers();
