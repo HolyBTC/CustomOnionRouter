@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "OnionRouter.Contracts.Protos";
+
+package Ping;
+
+service PingService {
+  rpc Ping (PingRequest)  returns (PingReply);
+}
+
+message PingRequest {
+}
+
+message PingReply {
+}

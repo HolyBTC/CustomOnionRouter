@@ -7,8 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Protobuf Include="..\..\Misc\OnionRouter.Contracts\Protos\Ping.proto" GrpcServices="Server" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Misc\OnionRouter.Contracts\OnionRouter.Contracts.csproj" />
+    </ItemGroup>
 </Project>
