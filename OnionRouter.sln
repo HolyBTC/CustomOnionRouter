@@ -4,6 +4,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionRouter.Server.Api", "O
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OnionRouter.Server", "OnionRouter.Server", "{AA30478A-86B2-4441-85E8-8D703EDCCDAD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{A4E6AFCA-82BA-4FE3-9CD1-F721C394B621}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionRouter.Cryptography", "Misc\OnionRouter.Cryptography\OnionRouter.Cryptography.csproj", "{0B243528-BCE3-41A9-835F-8F4B6759DDC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionRouter.Helpers", "Misc\OnionRouter.Helpers\OnionRouter.Helpers.csproj", "{841FE2D8-F82C-4C2A-A252-ACC47D44EC9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4ACB63C5-A51D-43AE-A241-13C47E222E45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionRouter.Cryptography.Tests", "tests\OnionRouter.Cryptography.Tests\OnionRouter.Cryptography.Tests.csproj", "{5A926E52-CEA2-40D7-A155-6FFA91B5B9D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +24,23 @@ Global
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B243528-BCE3-41A9-835F-8F4B6759DDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B243528-BCE3-41A9-835F-8F4B6759DDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B243528-BCE3-41A9-835F-8F4B6759DDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B243528-BCE3-41A9-835F-8F4B6759DDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{841FE2D8-F82C-4C2A-A252-ACC47D44EC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841FE2D8-F82C-4C2A-A252-ACC47D44EC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{841FE2D8-F82C-4C2A-A252-ACC47D44EC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{841FE2D8-F82C-4C2A-A252-ACC47D44EC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A926E52-CEA2-40D7-A155-6FFA91B5B9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A926E52-CEA2-40D7-A155-6FFA91B5B9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A926E52-CEA2-40D7-A155-6FFA91B5B9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A926E52-CEA2-40D7-A155-6FFA91B5B9D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B74E34C3-09A0-4C54-BA23-DB83AB52B1B6} = {AA30478A-86B2-4441-85E8-8D703EDCCDAD}
+		{0B243528-BCE3-41A9-835F-8F4B6759DDC0} = {A4E6AFCA-82BA-4FE3-9CD1-F721C394B621}
+		{841FE2D8-F82C-4C2A-A252-ACC47D44EC9C} = {A4E6AFCA-82BA-4FE3-9CD1-F721C394B621}
+		{5A926E52-CEA2-40D7-A155-6FFA91B5B9D5} = {4ACB63C5-A51D-43AE-A241-13C47E222E45}
 	EndGlobalSection
 EndGlobal
