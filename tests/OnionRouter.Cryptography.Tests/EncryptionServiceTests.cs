@@ -20,11 +20,13 @@ public class EncryptionServiceTests
     public void Encrypt_EncryptsCorrectly(string encryptionKey, string plainText, string expectedEncryptedDataAsBase64)
     {
         // Act
-        byte[]? returnedBytes = _encryptionService.Encrypt(Encoding.UTF8.GetBytes(plainText), Encoding.UTF8.GetBytes(encryptionKey));
+        byte[] returnedBytes = _encryptionService.Encrypt(Encoding.UTF8.GetBytes(plainText), Encoding.UTF8.GetBytes(encryptionKey));
+        byte[] decryptedBytes = _encryptionService.Decrypt(returnedBytes, Encoding.UTF8.GetBytes(encryptionKey));
 
         // Assert
         returnedBytes.Should().NotBeNull();
         returnedBytes.Should().BeEquivalentTo(Convert.FromBase64String(expectedEncryptedDataAsBase64));
+        decryptedBytes.Should().BeEquivalentTo(Encoding.UTF8.GetBytes(plainText));
     }
 
     [Theory]
@@ -52,13 +54,19 @@ public class EncryptionServiceTests
 
         // Act && Assert
         int? returnedLength = null;
+        byte[] privateKey = Encoding.UTF8.GetBytes(encryptionKey);
         for (int i = 0; i < 100; i++)
         {
+            byte[] plainData = Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()[..length]);
             byte[] encryptedData = _encryptionService.Encrypt(
-                Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()[..length]),
-                Encoding.UTF8.GetBytes(encryptionKey))!;
+                plainData,
+                privateKey);
             returnedLength ??= encryptedData.Length; // sets value only if 'returnedLength' is null
             returnedLength.Should().Be(encryptedData.Length);
+
+            // Additionally check if decryption works correctly
+            byte[] decryptedData = _encryptionService.Decrypt(encryptedData, privateKey);
+            decryptedData.Should().BeEquivalentTo(plainData);
         }
     }
 
