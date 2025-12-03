@@ -82,4 +82,31 @@ public class EncryptionServiceTests
 
         ex.Message.Should().Be("Encryption key is null or empty");
     }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Decrypt_WhenEmptyEncryptionKey_ThrowException(bool encryptionKeyIsNull)
+    {
+        // Act & Assert
+        OnionRouterEncryptionException ex =
+            Assert.Throws<OnionRouterEncryptionException>(() =>
+                _encryptionService.Decrypt([ 0x12 ], (encryptionKeyIsNull ? null : [])!));
+
+        ex.Message.Should().Be("Encryption key is null or empty");
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Decrypt_WhenPassedNullOrEmpty_ReturnsNull(bool isArgumentNull)
+    {
+        // Act
+        OnionRouterEncryptionException ex =
+            Assert.Throws<OnionRouterEncryptionException>(() =>
+                _encryptionService.Decrypt((isArgumentNull ? null : [])!, [ 0x12 ]));
+
+        // Assert
+        ex.Message.Should().Be("encryptedData is null or empty");
+    }
 }
