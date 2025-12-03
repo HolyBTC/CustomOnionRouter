@@ -1,17 +1,23 @@
 using System.Security.Cryptography;
 using OnionRouter.Cryptography.Abstractions;
+using OnionRouter.Cryptography.Exceptions;
 using OnionRouter.Helpers;
 
 namespace OnionRouter.Cryptography;
 
 public class EncryptionService : IEncryptionService
 {
-    public byte[]? Encrypt(byte[]? plainData, byte[] encryptionKey)
+    public byte[] Encrypt(byte[] plainData, byte[] encryptionKey)
     {
         // Check for empty or null plain text
         if (plainData.IsNullOrEmpty())
         {
-            return null;
+            throw new OnionRouterEncryptionException("Plain data is null or empty");
+        }
+
+        if (encryptionKey.IsNullOrEmpty())
+        {
+            throw new OnionRouterEncryptionException("Encryption key is null or empty");
         }
 
         using Aes aesAlg = Aes.Create();
@@ -28,7 +34,7 @@ public class EncryptionService : IEncryptionService
         // Create the streams used for encryption
         using MemoryStream msEncrypt = new MemoryStream();
         using CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
-        csEncrypt.Write(plainData!, 0, plainData!.Length);
+        csEncrypt.Write(plainData, 0, plainData!.Length);
         csEncrypt.FlushFinalBlock();
 
         // Return the Ciphertext as a Base64 string

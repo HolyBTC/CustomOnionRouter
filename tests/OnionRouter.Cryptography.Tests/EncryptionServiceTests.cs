@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using FluentAssertions;
+using OnionRouter.Cryptography.Exceptions;
 
 namespace OnionRouter.Cryptography.Tests;
 
@@ -32,10 +33,12 @@ public class EncryptionServiceTests
     public void Encrypt_WhenPassedNullOrEmpty_ReturnsNull(bool isArgumentNull)
     {
         // Act
-        byte[]? returnedBytes = _encryptionService.Encrypt(isArgumentNull ? null : [], []);
+        OnionRouterEncryptionException ex =
+            Assert.Throws<OnionRouterEncryptionException>(() =>
+                _encryptionService.Encrypt((isArgumentNull ? null : [])!, [ 0x12 ]));
 
         // Assert
-        returnedBytes.Should().BeNull();
+        ex.Message.Should().Be("Plain data is null or empty");
     }
 
     [Theory]
@@ -57,5 +60,18 @@ public class EncryptionServiceTests
             returnedLength ??= encryptedData.Length; // sets value only if 'returnedLength' is null
             returnedLength.Should().Be(encryptedData.Length);
         }
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Encrypt_WhenEmptyEncryptionKey_ThrowException(bool encryptionKeyIsNull)
+    {
+        // Act & Assert
+        OnionRouterEncryptionException ex =
+            Assert.Throws<OnionRouterEncryptionException>(() =>
+                _encryptionService.Encrypt([ 0x12 ], (encryptionKeyIsNull ? null : [])!));
+
+        ex.Message.Should().Be("Encryption key is null or empty");
     }
 }
