@@ -42,7 +42,7 @@ public class AsymmetricEncryptionService : IAsymmetricEncryption
         }
 
         using RSA rsa = RSA.Create();
-        rsa.ImportRSAPrivateKey(privateKey, out _);
+        rsa.ImportPkcs8PrivateKey(privateKey, out _);
         return rsa.Decrypt(encryptedData, RSAEncryptionPadding.OaepSHA256);
     }
 }
